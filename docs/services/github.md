@@ -17,7 +17,9 @@ The GitHub notification service changes commit status using [GitHub Apps](https:
 3. Generate a private key, and download it automatically
 ![3](https://user-images.githubusercontent.com/18019529/108397926-d4a36300-725b-11eb-83fe-74795c8c3e03.png)
 4. Install app to account
-5. Store privateKey in `argocd-notifications-secret` Secret and configure GitHub integration
+5. Find the app in your list of installed apps, click on the "Configure" button for, and get the "Installation ID" from the end of the URL.  You should end up on a URL like `https://github.com/organizations/YourOrg/settings/installations/123123123`, where
+   `YourOrg` is your GitHub orgaanization and `123123123` would be your installation ID in this case.  You can also click "App Settings" near the top of this page to get the App ID if you didn't get it from an earlier step.
+6. Store privateKey in `argocd-notifications-secret` Secret and configure GitHub integration
 in `argocd-notifications-cm` ConfigMap
 
 ```yaml
@@ -44,7 +46,7 @@ stringData:
     -----END RSA PRIVATE KEY-----
 ```
 
-6. Create subscription for your GitHub integration
+7. Create subscription for your GitHub integration
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
